@@ -78,8 +78,8 @@ let markers = document.querySelectorAll(".map-marker");
 markers.forEach(el => {
     el.addEventListener("mouseover", e => {
         tooltip.innerHTML = `<h2>${el.dataset.name}</h2> <div>Population: <strong>${el.dataset.population}</strong></div>`
-        let x = e.clientX
-        let y = e.clientY
+        let x = e.clientX + 30
+        let y = e.clientY + 30
         tooltip.style.left = x + "px"
         tooltip.style.top = y + "px"
 
@@ -88,8 +88,8 @@ markers.forEach(el => {
 
 markers.forEach(el => {
     el.addEventListener("mousemove", e => {
-        let x = e.clientX
-        let y = e.clientY
+        let x = e.clientX + 30
+        let y = e.clientY +30
         tooltip.style.left = x + "px"
         tooltip.style.top = y + "px"
 
