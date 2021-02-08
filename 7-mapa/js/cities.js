@@ -51,3 +51,56 @@ var cities = [
         href: "http://www.bialystok.pl/"
     }
 ];
+let map = document.querySelector(".map");
+let a = document.createElement("a")
+let tooltip = document.createElement("div")
+tooltip.style.left = `-9999px`
+tooltip.style.top = `-9999px`
+let body = document.querySelector("body");
+body.appendChild(tooltip)
+tooltip.classList.add("map-tooltip")
+
+
+
+
+cities.forEach(el => {
+    let cln = a.cloneNode(true)
+    cln.href = el.href
+    cln.classList.add("map-marker")
+    cln.dataset.name = el.name
+    cln.dataset.population = el.population
+    cln.style = `left: ${el.map_x}px; top: ${el.map_y}px`
+    cln.innerText = el.name
+    map.append(cln)
+})
+
+let markers = document.querySelectorAll(".map-marker");
+markers.forEach(el => {
+    el.addEventListener("mouseover", e => {
+        tooltip.innerHTML = `<h2>${el.dataset.name}</h2> <div>Population: <strong>${el.dataset.population}</strong></div>`
+        let x = e.clientX
+        let y = e.clientY
+        tooltip.style.left = x + "px"
+        tooltip.style.top = y + "px"
+
+    })
+})
+
+markers.forEach(el => {
+    el.addEventListener("mousemove", e => {
+        let x = e.clientX
+        let y = e.clientY
+        tooltip.style.left = x + "px"
+        tooltip.style.top = y + "px"
+
+
+    })
+})
+markers.forEach(el => {
+    el.addEventListener("mouseout", e => {
+        tooltip.style.left = `-9999px`
+        tooltip.style.top = `-9999px`
+    })
+})
+
+

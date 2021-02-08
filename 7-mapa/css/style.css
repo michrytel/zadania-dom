@@ -68,8 +68,6 @@ body {
     display: inline-block;
     white-space: nowrap;
     position: absolute;
-    left:-9999px;
-    top:-9999px;
     font-family: sans-serif;
     color: rgba(255,255,255,0.7);
     border-radius: 0 4px 4px 4px;
